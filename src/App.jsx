@@ -1,40 +1,28 @@
-import React, {useState} from "react";
-import FilmsList from "./components/filmsList";
-import './App.css'
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { HomePage, FilmsPage } from "./pages";
+import './App.css';
 
 function App(props){
-const[list, setList] = useState(["ready", "set", "GO"]);
-const[text, setText] = useState("");
-
-  function onSubmit(event) {
-    event.preventDefault();
-
-    let newList = [...list, text];
-    setList(newList);
-    setText("");
-  }
-  return(     
-    <div>
-     <h1>Hello World</h1>
-     <form onSubmit={onSubmit}>
-         <input
-           type="text"
-           name="text"
-           id="text"
-           value={text}
-           onChange={(event) => setText(event.target.value)}
-         />
-         <button type="submit">Add</button>
-       </form>
-       <ul>
-         {list.map((item, idx) => {
-           return <li key={item + idx}>{item}</li>;
-         })}
-       </ul>
-
-       <FilmsList/>
-    </div> 
-   )
+  
+return(
+<BrowserRouter>
+  <nav>
+    <ul>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="films">Films</NavLink>
+      </li>
+    </ul>
+  </nav>
+    <Routes>
+      <Route path="/" element={<HomePage/>} />
+      <Route path="films" element={<FilmsPage />} />
+    </Routes>
+</BrowserRouter>  
+)
+ 
 }
 
 export default App
