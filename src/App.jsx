@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import { HomePage, FilmsPage } from "./pages";
+import { BrowserRouter,Routes,Route,NavLink } from "react-router-dom";
+import { HomePage,FilmsPage,SingleFilmPage } from "./pages";
 import './App.css';
 
 function App(props){
@@ -17,8 +17,9 @@ return(
     </ul>
   </nav>
     <Routes>
-      <Route path="/" element={<HomePage/>} />
-      <Route path="films" element={<FilmsPage />} />
+      <Route path="/" element={<HomePage/>}/>
+      <Route path="/films" element={<FilmsPage/>}/>
+      <Route path="/films/films/:id" element={<SingleFilmPage/>}/>
     </Routes>
 </BrowserRouter>  
 )
